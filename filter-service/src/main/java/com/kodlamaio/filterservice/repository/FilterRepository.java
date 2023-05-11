@@ -8,4 +8,6 @@ import java.util.UUID;
 
 
 public interface FilterRepository extends MongoRepository<Filter, UUID> {
+    void deleteByCarId(UUID carId);
+    void deleteAllByBrandId(UUID brandId);
 }
