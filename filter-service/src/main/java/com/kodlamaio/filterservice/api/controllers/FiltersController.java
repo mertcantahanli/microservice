@@ -6,6 +6,7 @@ import com.kodlamaio.filterservice.business.dto.GetFilterResponse;
 import com.kodlamaio.filterservice.entities.Filter;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class FiltersController {
     }
 
     @GetMapping("/{id}")
-    public GetFilterResponse getById(@PathVariable UUID id) {
+    public GetFilterResponse getById(@PathVariable String id) {
         return service.getById(id);
     }
 }

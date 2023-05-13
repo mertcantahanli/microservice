@@ -1,8 +1,8 @@
 package com.kodlamaio.inventoryservice.business.kafka.producer;
 
-import com.kodlamaio.commonpackage.event.BrandDeletedEvent;
-import com.kodlamaio.commonpackage.event.CarCreatedEvent;
-import com.kodlamaio.commonpackage.event.CarDeletedEvent;
+import com.kodlamaio.commonpackage.event.inventory.BrandDeletedEvent;
+import com.kodlamaio.commonpackage.event.inventory.CarCreatedEvent;
+import com.kodlamaio.commonpackage.event.inventory.CarDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,34 +16,25 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class InventoryProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
-
-    public void sendMessage(CarCreatedEvent event) {
-        log.info(String.format("car-created event => %s", event.toString()));
-        Message<CarCreatedEvent> message = MessageBuilder
+    public void kafkaMessage(Object event, String topic) {
+        log.info(String.format("%s event => %s", topic, event.toString()));
+        Message<Object> message = MessageBuilder
                 .withPayload(event)
-                .setHeader(KafkaHeaders.TOPIC, "car-created")
+                .setHeader(KafkaHeaders.TOPIC, topic)
                 .build();
-
         kafkaTemplate.send(message);
+    }
+    public void sendMessage(CarCreatedEvent event) {
+        kafkaMessage(event,"car-created");
     }
 
     public void sendMessage(CarDeletedEvent event) {
-        log.info(String.format("car-deleted event => %s", event.toString()));
-        Message<CarDeletedEvent> message = MessageBuilder
-                .withPayload(event)
-                .setHeader(KafkaHeaders.TOPIC, "car-deleted")
-                .build();
-
-        kafkaTemplate.send(message);
+        kafkaMessage(event,"car-deleted");
     }
 
     public void sendMessage(BrandDeletedEvent event) {
-        log.info(String.format("brand-deleted event => %s", event.toString()));
-        Message<BrandDeletedEvent> message = MessageBuilder
-                .withPayload(event)
-                .setHeader(KafkaHeaders.TOPIC, "brand-deleted")
-                .build();
-
-        kafkaTemplate.send(message);
+        kafkaMessage(event,"brand-deleted");
     }
+
+
 }

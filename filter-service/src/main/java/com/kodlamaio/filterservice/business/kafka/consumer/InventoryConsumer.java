@@ -1,8 +1,8 @@
 package com.kodlamaio.filterservice.business.kafka.consumer;
 
-import com.kodlamaio.commonpackage.event.BrandDeletedEvent;
-import com.kodlamaio.commonpackage.event.CarCreatedEvent;
-import com.kodlamaio.commonpackage.event.CarDeletedEvent;
+import com.kodlamaio.commonpackage.event.inventory.BrandDeletedEvent;
+import com.kodlamaio.commonpackage.event.inventory.CarCreatedEvent;
+import com.kodlamaio.commonpackage.event.inventory.CarDeletedEvent;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.filterservice.business.abstracts.FilterService;
 import com.kodlamaio.filterservice.entities.Filter;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 public class InventoryConsumer {
     private final FilterService service;
     private final ModelMapperService mapper;
-
 
     @KafkaListener(
             topics = "car-created",
