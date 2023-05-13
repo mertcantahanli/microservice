@@ -1,7 +1,8 @@
 package com.kodlamaio.inventoryservice.business.concretes;
 
-import com.kodlamaio.commonpackage.configuration.event.CarCreatedEvent;
-import com.kodlamaio.commonpackage.configuration.event.CarDeletedEvent;
+import com.kodlamaio.commonpackage.CommonPackageApplication;
+import com.kodlamaio.commonpackage.event.CarCreatedEvent;
+import com.kodlamaio.commonpackage.event.CarDeletedEvent;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
 import com.kodlamaio.inventoryservice.business.dto.requests.create.CreateCarRequest;
