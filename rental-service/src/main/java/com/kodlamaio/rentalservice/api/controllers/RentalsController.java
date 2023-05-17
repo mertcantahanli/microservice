@@ -18,7 +18,8 @@ import java.util.UUID;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/rentals")
-public class RentalsController {
+public class RentalsController
+{
     private final RentalService service;
 
     @GetMapping
@@ -33,7 +34,8 @@ public class RentalsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateRentalResponse add(@Valid @RequestBody CreateRentalRequest request) {
+    public CreateRentalResponse add(@Valid @RequestBody CreateRentalRequest request) throws InterruptedException
+    {
         return service.add(request);
     }
 

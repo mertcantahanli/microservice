@@ -1,6 +1,6 @@
 package com.kodlamaio.inventoryservice.business.kafka.consumer;
 
-import com.kodlamaio.commonpackage.event.rental.RentalCreatedEvent;
+import com.kodlamaio.commonpackage.events.rental.RentalCreatedEvent;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
 import com.kodlamaio.inventoryservice.entities.enums.State;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +20,6 @@ public class RentalConsumer {
     )
     public void consume(RentalCreatedEvent event) {
         service.changeStateByCarId(State.Rented, event.getCarId());
-        log.info("Rental created event consumed {}", event);
+        log.info("Rental created events consumed {}", event);
     }
 }

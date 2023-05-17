@@ -1,6 +1,6 @@
 package com.kodlamaio.filterservice.business.kafka.consumer;
 
-import com.kodlamaio.commonpackage.event.rental.RentalCreatedEvent;
+import com.kodlamaio.commonpackage.events.rental.RentalCreatedEvent;
 import com.kodlamaio.filterservice.business.abstracts.FilterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +21,6 @@ public class RentalConsumer {
         var filter = service.getByCarId(event.getCarId());
         filter.setState("Rented");
         service.add(filter);
-        log.info("Rental created event consumed {}", event);
+        log.info("Rental created events consumed {}", event);
     }
 }

@@ -1,8 +1,8 @@
 package com.kodlamaio.filterservice.business.kafka.consumer;
 
-import com.kodlamaio.commonpackage.event.inventory.BrandDeletedEvent;
-import com.kodlamaio.commonpackage.event.inventory.CarCreatedEvent;
-import com.kodlamaio.commonpackage.event.inventory.CarDeletedEvent;
+import com.kodlamaio.commonpackage.events.inventory.BrandDeletedEvent;
+import com.kodlamaio.commonpackage.events.inventory.CarCreatedEvent;
+import com.kodlamaio.commonpackage.events.inventory.CarDeletedEvent;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.filterservice.business.abstracts.FilterService;
 import com.kodlamaio.filterservice.entities.Filter;
@@ -25,7 +25,7 @@ public class InventoryConsumer {
     public void consume(CarCreatedEvent event) {
         var filter = mapper.forRequest().map(event, Filter.class);
         service.add(filter);
-        log.info("Car created event consumed {}", event);
+        log.info("Car created events consumed {}", event);
     }
 
     @KafkaListener(
@@ -34,7 +34,7 @@ public class InventoryConsumer {
     )
     public void consume(CarDeletedEvent event) {
         service.deleteByCarId(event.getCarId());
-        log.info("Car deleted event consumed {}", event);
+        log.info("Car deleted events consumed {}", event);
     }
 
     @KafkaListener(
@@ -43,6 +43,6 @@ public class InventoryConsumer {
     )
     public void consume(BrandDeletedEvent event) {
         service.deleteAllByBrandId(event.getBrandId());
-        log.info("Brand deleted event consumed {}", event);
+        log.info("Brand deleted events consumed {}", event);
     }
 }
