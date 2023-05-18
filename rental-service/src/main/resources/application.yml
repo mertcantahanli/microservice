@@ -35,5 +35,5 @@ resilience4j:
   retry:
     instances:
       rentalToInventory:
-        max-attempts: 3
-        wait-duration: 5s
+        max-attempts: 5
+        wait-duration: 15s
