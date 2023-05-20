@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="discovery-server" />
+        <module name="inventory-service" />
+        <module name="maintenance-service" />
+        <module name="common-package" />
         <module name="api-gateway" />
         <module name="filter-service" />
         <module name="rental-service" />
-        <module name="discovery-server" />
-        <module name="inventory-service" />
-        <module name="common-package" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="discovery-server" target="17" />
       <module name="filter-service" target="17" />
       <module name="inventory-service" target="17" />
+      <module name="maintenance-service" target="17" />
       <module name="rental-service" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -30,6 +32,7 @@
       <module name="discovery-server" options="-parameters" />
       <module name="filter-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
+      <module name="maintenance-service" options="-parameters" />
       <module name="rental-service" options="-parameters" />
     </option>
   </component>

@@ -18,7 +18,7 @@ public class GetAllFiltersResponse {
     private UUID brandId;
     private String modelName;
     private String brandName;
-    private String plateName;
+    private String plate;
     private int modelYear;
     private double dailyPrice;
     private String state;
