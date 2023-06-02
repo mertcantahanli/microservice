@@ -1,5 +1,6 @@
 package com.kodlamaio.inventoryservice.api.controllers;
 
+import com.kodlamaio.commonpackage.utils.dto.CarClientResponse;
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
 import com.kodlamaio.inventoryservice.business.dto.requests.create.CreateCarRequest;
@@ -21,6 +22,10 @@ import java.util.UUID;
 @RequestMapping("/api/cars")
 public class CarsController {
     private final CarService service;
+    @GetMapping("/get-car-for-invoice/{carId}")
+    public CarClientResponse getCarForInvoice(@PathVariable UUID carId) {
+        return service.getCarForInvoice(carId);
+    }
 
     @GetMapping
     public List<GetAllCarsResponse> getAll() {

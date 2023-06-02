@@ -2,10 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
         <module name="discovery-server" />
         <module name="inventory-service" />
         <module name="maintenance-service" />
@@ -19,6 +21,7 @@
     <bytecodeTargetLevel>
       <module name="api-gateway" target="17" />
       <module name="common-package" target="17" />
+      <module name="config-server" target="17" />
       <module name="discovery-server" target="17" />
       <module name="filter-service" target="17" />
       <module name="inventory-service" target="17" />
@@ -31,6 +34,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="common-package" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="filter-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
