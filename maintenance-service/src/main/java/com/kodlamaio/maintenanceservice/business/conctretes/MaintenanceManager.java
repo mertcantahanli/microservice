@@ -62,7 +62,8 @@ public class MaintenanceManager implements MaintenanceService {
         maintenance.setStartDate(LocalDateTime.now());
         maintenance.setEndDate(null);
         repository.save(maintenance);
-        sendKafkaMaintenanceCreatedEvent(request.getCarId());
+
+        sendKafkaMaintenanceCreatedEvent(request.getCarId()); //arabanin bakima alindiginda inventory service de arabinin state ini degistirir
 
         CreateMaintenanceResponse response = mapper.forResponse().map(maintenance, CreateMaintenanceResponse.class);
 
@@ -87,12 +88,6 @@ public class MaintenanceManager implements MaintenanceService {
         repository.deleteById(id);
     }
 
-   /* private void makeCarAvailableIfIsCompletedFalse(UUID id) {
-        UUID carId = repository.findById(id).get().getCar().getId();
-        if (repository.existsByCarIdAndIsCompletedIsFalse(carId)) {
-            carService.changeState(carId, State.AVAILABLE);
-        }
-    } */
    private void sendKafkaMaintenanceCreatedEvent(UUID carId) {
        producer.sendMessage(new MaintenanceCreatedEvent(carId), "maintenance-created");
    }

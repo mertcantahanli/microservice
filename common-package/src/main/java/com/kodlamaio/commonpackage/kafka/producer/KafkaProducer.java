@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
 public class KafkaProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public <T extends Event> void sendMessage(T event, String topic) {
+    public <T extends Event> void sendMessage(T event, String topic) { //event turu classlar almasi icin ozellestirdik
         log.info(String.format("%s events => %s", topic, event.toString()));
         Message<T> message = MessageBuilder
-                .withPayload(event)
-                .setHeader(KafkaHeaders.TOPIC, topic)
+                .withPayload(event)//mesajın içeriğini(event) belirlemek için kullanılır.
+                .setHeader(KafkaHeaders.TOPIC, topic)//mesajın hedeflendiği konuyu başlık olarak ayarlar
                 .build();
 
         kafkaTemplate.send(message);
